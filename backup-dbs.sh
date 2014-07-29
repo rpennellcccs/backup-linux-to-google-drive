@@ -17,6 +17,7 @@ if [ -d $TMPDIR ]; then
 fi
 mkdir $TMPDIR
 
+echo "Generating backup files..."
 dbbackupfile=sql_`date +%Y-%m-%d-%H-%M-%S`.tgz
 dbarray=$(echo $DATABASES | tr "," "\n")
 for db in $dbarray
@@ -24,8 +25,12 @@ do
     mysqldump -u$USER -p$PASSWD --opt $db > $TMPDIR/$db.sql
 done
 
-tar -cvzf $dbbackupfile --directory=./$TMPDIR .
+echo "Compressing..."
+tar -cvzf $dbbackupfile --directory=./$TMPDIR . > /dev/null
+
+echo "Sending to Google Drive..."
 php google_drive_uploader.php $dbbackupfile $GDRIVE_DIR_ID
 
+echo "Cleaning up..."
 rm -rf $TMPDIR
 rm $dbbackupfile
