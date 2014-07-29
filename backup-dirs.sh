@@ -4,7 +4,7 @@ DIRS="$1"
 GDRIVE_DIR_ID="$2"
 
 if [ -z $DIRS ] || [ -z $GDRIVE_DIR_ID ] ; then
-    echo "Usage: "$0"dir1,dir2,...,dirN gdrive_dir_id"
+    echo "Usage: "$0" dir1,dir2,...,dirN gdrive_dir_id"
     exit 1
 fi
 
