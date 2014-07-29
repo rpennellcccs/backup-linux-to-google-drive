@@ -12,11 +12,16 @@ dirarray=$(echo $DIRS | tr "," "\n")
 for dir in $dirarray
 do
     if [ ! -d $dir ]; then
-        echo "ERROR: folder does not exist"
+        echo "ERROR: folder $folder does not exist"
     else
+	echo "Compressing folder $dir..."
         dirbackupfile=$(basename $dir)_`date +%Y-%m-%d-%H-%M-%S`.tgz
-	tar -cvzf $dirbackupfile --directory="$dir" .
+	tar -cvzf $dirbackupfile --directory="$dir" . > /dev/null
+
+	echo "Uploading $dirbackupfile to Google Drive..."
         php google_drive_uploader.php $dirbackupfile  $GDRIVE_DIR_ID
+
+	echo "Cleaning up..."
 	rm $dirbackupfile
     fi
 done
