@@ -8,7 +8,7 @@ PASSWD="$3"
 GDRIVE_DIR_ID="$4"
 
 if [ -z $DATABASES ] || [ -z $USER  ] || [ -z $PASSWD ] || [ -z $GDRIVE_DIR_ID ] ; then
-    echo "Usage: "$0" db1,db2,...,dbN user passwd gdrive_dir_id"
+    echo "Usage: $0 db1,db2,...,dbN user passwd gdrive_dir_id"
     exit 1
 fi
 
