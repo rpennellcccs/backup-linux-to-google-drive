@@ -12,7 +12,7 @@ dirarray=$(echo $DIRS | tr "," "\n")
 for dir in $dirarray
 do
     if [ ! -d $dir ]; then
-        echo "ERROR: folder $folder does not exist"
+        echo "ERROR: folder $dir does not exist"
     else
 	echo "Compressing folder $dir..."
         dirbackupfile=$(basename $dir)_`date +%Y-%m-%d-%H-%M-%S`.tgz
