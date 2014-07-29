@@ -188,8 +188,8 @@ function get_mime_type( $file_name ) {
 
 
 function parse_response( $raw_data ) {
-	global $verbose;
-	if( $verbose ) { echo ">   parsing response: ".$raw_data."\n" ; }
+	//global $verbose;
+	//if( $verbose ) { echo ">   parsing response: ".$raw_data."\n" ; }
 
 	$parsed_response = array( 'code'=>-1, 'headers'=>array(), 'body'=>"" ) ;
 
